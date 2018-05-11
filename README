@@ -1,0 +1,48 @@
+README
+
+*The research dataset used in the work can be found at
+(Eclipse) 
+2011.msrconf.org/msr-challenge.html
+(Mozilla)
+github.com/jxshin/mzdata/tree/master/data/2016/level0
+
+
+
+We replicated three studies in this work, i.e., Issue Localization (ICSE'12), Duplicate Detection (ASE'11), Fix-time Prediction (CSMR'12).
+
+*The scripts that we used in the work include many operations about Mysql database. The users need to modify the configuration to run the scripts.
+
+
+[Issue Localization]
+
+*The script/program is downloaded from
+storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/bugcenter/BugLocator.zip
+
+*The source files of Eclipse v3.1 is downloaded from
+archive.eclipse.org/eclipse/downloads/drops/R-3.1-200506271435/eclipse-sourceBuild-srcIncluded-3.1.zip
+
+*When running the script/program, the alpha factor is set to 0
+
+
+[Duplicate Detection]
+*The script/program is downloaded from
+www.comp.nus.edu.sg/~specmine/suncn/ase11/dbrd-ase11.tar
+
+*The datasets of the original paper are downloaded from
+http://www.comp.nus.edu.sg/~specmine/suncn/ase11/large-eclipse.txt.tar.bz2
+http://www.comp.nus.edu.sg/~specmine/suncn/ase11/large-mozilla.txt.tar.bz2
+
+*When running the script/program, the config file is full-textual-full-categorial.cfg
+
+*To run the script/program, the iteration number is set to 5
+
+
+[Fix-time Prediction]
+
+*The ML tool is Weka v3.8.1.
+
+
+
+
+
+
