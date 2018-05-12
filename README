@@ -10,8 +10,6 @@ github.com/jxshin/mzdata/tree/master/data/2016/level0
 
 We replicated three studies in this work, i.e., Issue Localization (ICSE'12), Duplicate Detection (ASE'11), Fix-time Prediction (CSMR'12).
 
-*The scripts that we used in the work include many operations about Mysql database. The users need to modify the configuration to run the scripts.
-
 
 [Issue Localization]
 
@@ -35,11 +33,15 @@ So far, the input data of BugLocator.jar is ready.
 *Eclipse v3.1 source files
 
 *When running the script/program, the alpha factor is set to 0
-The detailed command is 
+*The command is 
 java -jar BugLocator.jar -b <path of EclipseBugRepository_initial.xml> -s <path of Eclipse source files folder> -a 0 -o <path of output file>
 
 
+
 [Duplicate Detection]
+
+[Download]
+
 *The script/program is downloaded from
 www.comp.nus.edu.sg/~specmine/suncn/ase11/dbrd-ase11.tar
 
@@ -47,9 +49,25 @@ www.comp.nus.edu.sg/~specmine/suncn/ase11/dbrd-ase11.tar
 http://www.comp.nus.edu.sg/~specmine/suncn/ase11/large-eclipse.txt.tar.bz2
 http://www.comp.nus.edu.sg/~specmine/suncn/ase11/large-mozilla.txt.tar.bz2
 
-*When running the script/program, the config file is full-textual-full-categorial.cfg
+[Description]
 
-*To run the script/program, the iteration number is set to 5
+BugLocator.zip contains dbrd and full-textual-full-categorial.cfg, which are needed in this replication experiment. 
+The executable program (i.e., dbrd) is a binary file, which is needed to run on Linux.
+
+
+The input file of the executable program is large-eclispe.txt or large-mozilla.txt
+To conduct the comparative experiment, the studied issue reports should exist both in the original paper's dataset (i.e., large-eclispe.txt or large-mozilla.txt) and our dataset (i.e., Eclipse2011 and Mozilla2016). 
+However, not all issue reports in the original paper's dataset can be found in our dataset.
+Therefore, the bag of words is changed in replication experiment.
+Moreover, the value of textual feature is dictionary value, which lost semantic information and could not be recovered to textual information. 
+Thus, to conduct the comparative experiment, the input file must be over-written. 
+
+According to the issue id (i.e., bug id) recorded in large-eclispe.txt (or large-mozilla.txt) and Eclipse2011 (or Mozilla2016), we retrieved  initial Summary, Product, Component, Priority and description for each issue to compose new input file.
+
+*When running the script/program, the config file is full-textual-full-categorial.cfg
+*When running the script/program, the iteration number is set to 5
+*The command is 
+./dbrd -i 5 -n <name of output file>  -r full-textual-full-categorial.cfg <path of input file> 
 
 
 [Fix-time Prediction]
