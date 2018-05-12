@@ -7,7 +7,6 @@ README
 github.com/jxshin/mzdata/tree/master/data/2016/level0
 
 
-
 We replicated three studies in this work, i.e., Issue Localization (ICSE'12), Duplicate Detection (ASE'11), Fix-time Prediction (CSMR'12).
 
 
@@ -23,8 +22,7 @@ archive.eclipse.org/eclipse/downloads/drops/R-3.1-200506271435/eclipse-sourceBui
 
 [Description]
 BugLocator.zip contains BugLocator.jar and data/EclipseBugRepository.xml, which are needed in this replication experiment. 
-But it does not contain the source files of Eclipse, so you have to download the source files by yourself. 
-According to the original paper, the version of Eclipse is 3.1, and the available link is provided above.
+But it does not contain the source files of Eclipse.
 
 According to the issue id (i.e., bug id) recorded in data/EclipseBugRepository and Eclipse2011 (a MySql dump of Eclipse, the available link is provided above), we searched initial Summary for each issue to compose EclipseBugRepository_initial.xml
 
@@ -35,6 +33,7 @@ So far, the input data of BugLocator.jar is ready.
 *When running the script/program, the alpha factor is set to 0
 *The command is 
 java -jar BugLocator.jar -b <path of EclipseBugRepository_initial.xml> -s <path of Eclipse source files folder> -a 0 -o <path of output file>
+
 
 
 
@@ -51,9 +50,8 @@ http://www.comp.nus.edu.sg/~specmine/suncn/ase11/large-mozilla.txt.tar.bz2
 
 [Description]
 
-BugLocator.zip contains dbrd and full-textual-full-categorial.cfg, which are needed in this replication experiment. 
+dbrd-ase11.tar contains dbrd and full-textual-full-categorial.cfg, which are needed in this replication experiment. 
 The executable program (i.e., dbrd) is a binary file, which is needed to run on Linux.
-
 
 The input file of the executable program is large-eclispe.txt or large-mozilla.txt
 To conduct the comparative experiment, the studied issue reports should exist both in the original paper's dataset (i.e., large-eclispe.txt or large-mozilla.txt) and our dataset (i.e., Eclipse2011 and Mozilla2016). 
@@ -64,18 +62,34 @@ Thus, to conduct the comparative experiment, the input file must be over-written
 
 According to the issue id (i.e., bug id) recorded in large-eclispe.txt (or large-mozilla.txt) and Eclipse2011 (or Mozilla2016), we retrieved  initial Summary, Product, Component, Priority and description for each issue to compose new input file.
 
-*When running the script/program, the config file is full-textual-full-categorial.cfg
-*When running the script/program, the iteration number is set to 5
+*According to the original paper, we use the config file full-textual-full-categorial.cfg and set the iteration number to 5
 *The command is 
 ./dbrd -i 5 -n <name of output file>  -r full-textual-full-categorial.cfg <path of input file> 
 
 
+
 [Fix-time Prediction]
+
+[Download]
+
+The original paper does not provide script/program and dataset.
+
+[Description]
+
+The input file is extracted from Eclipse2011 and Mozilla2016. According to the original paper, the issue report who was reported before October 2007 in Eclipse (July 2008 in Mozilla) is selected.
+
+The main contribution of the original paper is the filtering step, thus the comparative experiments are consisted of two groups, i.e., before-filtering and after-filtering.
+
+*The shreshold of filtering data is set to 0.125.
 
 *The ML tool is Weka v3.8.1.
 
+According to the characteristic of features (e.g., component_id), the features are preprocessed to nominal features.
 
+The machine learning algorithm is Naive Bayes classifier.
 
+The approach is evaluated through 10-Fold Cross-validation.
 
+The evaluation measurement AUC is shown as ROC in Weka.
 
 
