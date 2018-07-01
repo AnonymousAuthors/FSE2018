@@ -36,7 +36,6 @@ java -jar BugLocator.jar -b <path of EclipseBugRepository_initial.xml> -s <path 
 
 
 
-
 [Duplicate Detection]
 
 [Download]
@@ -91,5 +90,22 @@ The machine learning algorithm is Naive Bayes classifier.
 The approach is evaluated through 10-Fold Cross-validation.
 
 The evaluation measurement AUC is shown as ROC in Weka.
+
+
+
+
+
+*We followed exactly the same experimental setting and ran the same scripts to conduct the reproduction. However, the replicated results are not exactly the same as the results in the original papers due to the following reasons.
+
+For issue localization: 
+The experiment is conducted on Eclipse but the authors didn't provide the source files (i.e., Eclipse v3.1, which contains 12,863 files as reported in the original paper), so we downloaded Eclipse v3.1 from Eclipse official website, which contains 11,892 files. This may explain the difference between our results and the original paper's results.
+
+For duplicate detection: 
+a) The approach introduces randomness, as stated in the original paper "the training set is constructed randomly and the gradient descent also involves randomness."
+b) The studied issue reports should exist both in the original paper's datasets and our datasets so that we can extract modified data and initial data to conduct the comparative experiments. However, some issues, e.g., open security bugs may be hidden upon reported and later went public (see sanitization process of Mozilla: https://bugzilla.mozilla.org/show_bug.cgi?id=838947). The proportion of these issues is less than 0.03%. This difference also leads to the difference in weights of text-features because the bags of words are different.
+
+For fix-time prediction:
+a) It adopts 10-folds cross validation, which introduces randomness.
+b) As explained above, the dumps may not be exactly the same.
 
 
